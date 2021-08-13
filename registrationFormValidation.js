@@ -15,8 +15,10 @@ function submitOnclick()
 
     var dob = document.forms["registrationForm"]["dob"].value
     var religion = document.forms["registrationForm"]["religion"].value
+    var email = document.forms["registrationForm"]["email"].value
 
-    var errors = [];
+    var username = document.forms["registrationForm"]["username"].value
+    var password = document.forms["registrationForm"]["password"].value
 
     if(fname == "")
     {
@@ -42,5 +44,21 @@ function submitOnclick()
         document.getElementById("religion").style.borderColor="#f44336";
         alert("Please Select your Religion");
     }
+    if(email == "")
+    {
+        document.getElementById("email").style.borderColor="#f44336";
+        alert("Please Enter your Email");
+    }
+    if(username == "")
+    {
+        document.getElementById("username").style.borderColor="#f44336";
+        alert("Please Set your UserName");
+    }
+    if(password == "")
+    {
+        document.getElementById("password").style.borderColor="#f44336";
+        alert("Please Set your Password");
+    }
+
         
 }
