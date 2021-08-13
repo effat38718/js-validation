@@ -24,7 +24,13 @@
     if ($_SERVER['REQUEST_METHOD'] === "POST") {
         $username = $_POST['userName'];
         $password = $_POST['password'];
-        $position = $_POST['position'];
+        $fname = $_POST['fname'];
+        $lname = $_POST['lname'];
+        $gender = $_POST['gender'];
+        $dob = $_POST['dob'];
+        $religion = $_POST['religion'];
+        $phone = $_POST['phone'];
+        $email = $_POST['email'];
 
         if (empty($username)) {
             $userNameErr = "User name cannot be empty!";
