@@ -17,16 +17,16 @@
 
     require 'DbInsert.php';
 
-    $useName = $password = $position = "";
-    $userNameErr = $passwordErr = $positionErr  =  "";
+    $fname = $lname = $gender = $dob = $religion = $presentAddress = $permanentAddress = $phone = $email = $websiteLink = $username = $password = "";
+    $usernameErr = $passwordErr = $fnameErr = $lnameErr = $genderErr = $dobErr = $religionErr = $phoneErr = $emailErr = "";
     $successMessage = $errorMessage = "";
     $flag = false;
     if ($_SERVER['REQUEST_METHOD'] === "POST") {
-        $userName = $_POST['userName'];
+        $username = $_POST['userName'];
         $password = $_POST['password'];
         $position = $_POST['position'];
 
-        if (empty($userName)) {
+        if (empty($username)) {
             $userNameErr = "User name cannot be empty!";
             $flag = true;
         }
@@ -34,13 +34,37 @@
             $passwordErr = "password cannot be empty!";
             $flag = true;
         }
-        if (empty($position)) {
-            $positionErr = "position cannot be empty!";
+        if (empty($fname)) {
+            $fnameErr = "first name cannot be empty!";
+            $flag = true;
+        }
+        if (empty($lname)) {
+            $lnameErr = "last name cannot be empty!";
+            $flag = true;
+        }
+        if (empty($gender)) {
+            $genderErr = "gender cannot be empty!";
+            $flag = true;
+        }
+        if (empty($dob)) {
+            $dobErr = "date of birth cannot be empty!";
+            $flag = true;
+        }
+        if (empty($religion)) {
+            $religionErr = "religion cannot be empty!";
+            $flag = true;
+        }
+        if (empty($phone)) {
+            $phoneErr = "phone cannot be empty!";
+            $flag = true;
+        }
+        if (empty($email)) {
+            $emailErr = "email cannot be empty!";
             $flag = true;
         }
 
         if (!$flag) {
-            if (strlen($userName) > 10) {
+            if (strlen($username) > 10) {
                 $userNameErr = "Username cannot be more than 10 characters!";
                 $flag = true;
             }
@@ -49,13 +73,20 @@
                 $flag = true;
             }
             if (!$flag) {
-                $userName = test_input($userName);
+                $username = test_input($userName);
                 $password = test_input($password);
-                $position = test_input($position);
+                $fname = test_input($fname);
+                $lname = test_input($lname);
+                $gender = test_input($gender);
+                $dob = test_input($dob);
+                $religion = test_input($religion);
+                $phone = test_input($phone);
+                $email = test_input($email);
+
 
                 // $data = array("username" => $userName, "password" => $password, "position" => $position);
                 // $data_encode = json_encode($data);
-                $result1 = register($userName,  $position, $password); //write($data_encode);
+                $result1 = register($userName,  $position, $fname, $lname, $gender, $dob, $religion, $phone, $email); //write($data_encode);
                 if ($result1) {
                     $successMessage = "Signup Successfully.";
                 } else {
